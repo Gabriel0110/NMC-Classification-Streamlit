@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications import ResNet50
 
-base_dir = 'C:\\Users\\gabri\\Desktop\\Code\\NUT-Carcinoma-Classification\\NUT-Carcinoma-Pathology-Classification\\NMC Pathology'
+base_dir = '[path to the dataset]'
 train_dir = os.path.join(base_dir, 'train')
 validation_dir = os.path.join(base_dir, 'validation')
 
