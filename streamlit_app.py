@@ -3,6 +3,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from image_classification import classification
 from tensorflow.keras.preprocessing import image
+from tempfile import NamedTemporaryFile
 
 
 st.title("NUT Midline Carcinoma Pathology Classification")
@@ -12,8 +13,9 @@ st.write("")
 
 uploaded_file = st.file_uploader("Choose a pathology image...")
 if uploaded_file is not None:
-    #image = Image.open(uploaded_file)
-    img = image.load_img(np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8), target_size=(224, 224, 3), color_mode="rgb")
+    temp_file = NamedTemporaryFile(delete=False)
+    temp_file.write(uploaded_file.getvalue())
+    img = image.load_img(temp_file.name, target_size=(224, 224, 3), color_mode="rgb")
     st.image(img, caption='Uploaded pathology image', use_column_width=True)
     st.write("")
 
